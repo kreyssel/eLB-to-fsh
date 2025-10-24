@@ -1,0 +1,38 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Identifier_LBNR",
+	"version": "1.0.0",
+	"name": "KK_ELB_Identifier_LBNR",
+	"status": "draft",
+	"fhirVersion": "4.0.1",
+	"kind": "complex-type",
+	"abstract": false,
+	"type": "Identifier",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Identifier",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Identifier.system",
+				"path": "Identifier.system",
+				"min": 1,
+				"fixedUri": "http://fhir.de/sid/bfarm/lbnr",
+				"mustSupport": true
+			},
+			{
+				"id": "Identifier.value",
+				"path": "Identifier.value",
+				"min": 1,
+				"constraint": [
+					{
+						"key": "LaengeLBNR",
+						"severity": "error",
+						"human": "Eine LBNR muss neunstellig numerisch sein.",
+						"expression": "matches('^[0-9]{9}$')"
+					}
+				],
+				"mustSupport": true
+			}
+		]
+	}
+}

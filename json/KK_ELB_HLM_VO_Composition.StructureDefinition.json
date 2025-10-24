@@ -1,0 +1,223 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_Composition",
+	"version": "1.0.0",
+	"name": "KK_ELB_HLM_VO_Composition",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Composition",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Composition",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Composition.implicitRules",
+				"path": "Composition.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Composition.language",
+				"path": "Composition.language",
+				"max": "0"
+			},
+			{
+				"id": "Composition.text",
+				"path": "Composition.text",
+				"max": "0"
+			},
+			{
+				"id": "Composition.contained",
+				"path": "Composition.contained",
+				"max": "0"
+			},
+			{
+				"id": "Composition.extension",
+				"path": "Composition.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 1
+			},
+			{
+				"id": "Composition.extension:zusatzinfos",
+				"path": "Composition.extension",
+				"sliceName": "zusatzinfos",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Extension",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_EX_Zusatzinfos"
+						]
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false
+			},
+			{
+				"id": "Composition.identifier",
+				"path": "Composition.identifier",
+				"max": "0"
+			},
+			{
+				"id": "Composition.status",
+				"path": "Composition.status",
+				"fixedCode": "final",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.type",
+				"path": "Composition.type",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.type.coding",
+				"path": "Composition.type.coding",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.type.coding.code",
+				"path": "Composition.type.coding.code",
+				"short": "eHLM elektronische Heilmittelverordnung",
+				"min": 1,
+				"fixedCode": "e13A",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.category",
+				"path": "Composition.category",
+				"max": "0"
+			},
+			{
+				"id": "Composition.subject",
+				"path": "Composition.subject",
+				"max": "0"
+			},
+			{
+				"id": "Composition.encounter",
+				"path": "Composition.encounter",
+				"max": "0"
+			},
+			{
+				"id": "Composition.date",
+				"path": "Composition.date",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.author",
+				"path": "Composition.author",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.author.identifier",
+				"path": "Composition.author.identifier",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.author.identifier.system",
+				"path": "Composition.author.identifier.system",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.author.identifier.value",
+				"path": "Composition.author.identifier.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.title",
+				"path": "Composition.title",
+				"fixedString": "Elektronische Verordnung Heilmittel",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.confidentiality",
+				"path": "Composition.confidentiality",
+				"max": "0"
+			},
+			{
+				"id": "Composition.attester",
+				"path": "Composition.attester",
+				"max": "0"
+			},
+			{
+				"id": "Composition.custodian",
+				"path": "Composition.custodian",
+				"max": "0"
+			},
+			{
+				"id": "Composition.relatesTo",
+				"path": "Composition.relatesTo",
+				"max": "0"
+			},
+			{
+				"id": "Composition.event",
+				"path": "Composition.event",
+				"max": "0"
+			},
+			{
+				"id": "Composition.section",
+				"path": "Composition.section",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "title"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.section:heilmittelverordnung",
+				"path": "Composition.section",
+				"sliceName": "heilmittelverordnung",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.section:heilmittelverordnung.title",
+				"path": "Composition.section.title",
+				"min": 1,
+				"fixedString": "Elektronische Verordnung Heilmittel",
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.section:heilmittelverordnung.entry",
+				"path": "Composition.section.entry",
+				"min": 1,
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_ServiceRequest"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Composition.section:heilmittelverordnung.entry.reference",
+				"path": "Composition.section.entry.reference",
+				"min": 1,
+				"mustSupport": true
+			}
+		]
+	}
+}

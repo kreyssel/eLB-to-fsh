@@ -1,0 +1,340 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ConfirmationRequestParameters",
+	"version": "1.0.0",
+	"name": "KK_ELB_ConfirmationRequestParameters",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Parameters",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Parameters",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Parameters",
+				"path": "Parameters",
+				"constraint": [
+					{
+						"key": "Parameters-endpoint-request-with-callback",
+						"severity": "error",
+						"human": "Im Falle einer 'REQUEST_WITH_CALLBACK'-Anfrage muss der 'callbackUrl'-Parameter vorhanden sein",
+						"expression": "parameter.where(name = 'requestType' and (value as Coding).system = 'https://e-lb.de/fhir/CodeSystem/KK_ELB_RequestType' and (value as Coding).code = 'REQUEST_WITH_CALLBACK').exists() implies parameter.where(name = 'callbackUrl' and (value as url).exists()).exists()"
+					}
+				]
+			},
+			{
+				"id": "Parameters.meta",
+				"path": "Parameters.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.meta.profile",
+				"path": "Parameters.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.implicitRules",
+				"path": "Parameters.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.language",
+				"path": "Parameters.language",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter",
+				"path": "Parameters.parameter",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "name"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 4,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType",
+				"path": "Parameters.parameter",
+				"sliceName": "requestType",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "requestType",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].id",
+				"path": "Parameters.parameter.value[x].id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].system",
+				"path": "Parameters.parameter.value[x].system",
+				"min": 1,
+				"fixedUri": "https://e-lb.de/fhir/CodeSystem/KK_ELB_RequestType",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].version",
+				"path": "Parameters.parameter.value[x].version",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].code",
+				"path": "Parameters.parameter.value[x].code",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].display",
+				"path": "Parameters.parameter.value[x].display",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.value[x].userSelected",
+				"path": "Parameters.parameter.value[x].userSelected",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:requestType.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl",
+				"path": "Parameters.parameter",
+				"sliceName": "callbackUrl",
+				"max": "1"
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "callbackUrl",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "url"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:callbackUrl.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier",
+				"path": "Parameters.parameter",
+				"sliceName": "softwareIdentifier",
+				"comment": "Freier Identifier für die einliefernde Software",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "softwareIdentifier",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.value[x].id",
+				"path": "Parameters.parameter.value[x].id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:softwareIdentifier.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint",
+				"path": "Parameters.parameter",
+				"sliceName": "emailContactPoint",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "emailContactPoint",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "ContactPoint"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].id",
+				"path": "Parameters.parameter.value[x].id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].system",
+				"path": "Parameters.parameter.value[x].system",
+				"min": 1,
+				"fixedCode": "email",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].value",
+				"path": "Parameters.parameter.value[x].value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].use",
+				"path": "Parameters.parameter.value[x].use",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].rank",
+				"path": "Parameters.parameter.value[x].rank",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].period",
+				"path": "Parameters.parameter.value[x].period",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:chargeItem",
+				"path": "Parameters.parameter",
+				"sliceName": "chargeItem",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:chargeItem.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:chargeItem.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "chargeItem",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:chargeItem.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:chargeItem.resource",
+				"path": "Parameters.parameter.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:chargeItem.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			}
+		]
+	}
+}

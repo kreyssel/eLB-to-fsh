@@ -1,0 +1,53 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor",
+	"version": "1.0.0",
+	"name": "KK_ELB_Payor",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "complex-type",
+	"abstract": false,
+	"context": [
+		{
+			"type": "element",
+			"expression": "ChargeItem"
+		}
+	],
+	"type": "Extension",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Extension.url",
+				"path": "Extension.url",
+				"fixedUri": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor"
+			},
+			{
+				"id": "Extension.value[x]",
+				"path": "Extension.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.value[x].system",
+				"path": "Extension.value[x].system",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.value[x].value",
+				"path": "Extension.value[x].value",
+				"mustSupport": true
+			}
+		]
+	}
+}

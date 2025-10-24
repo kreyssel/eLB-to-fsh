@@ -1,0 +1,429 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem",
+	"version": "1.0.0",
+	"name": "KK_ELB_ChargeItem",
+	"status": "draft",
+	"date": "2023-09-11T07:14:25.1972434+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "ChargeItem",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/ChargeItem",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "ChargeItem",
+				"path": "ChargeItem",
+				"constraint": [
+					{
+						"key": "LBNR",
+						"severity": "error",
+						"human": "In performer:angestellteLeistungserbringerin ist keine LBNR angegeben, diese ist aber eine Pflichtangabe bei dem verwendeten SGS code.",
+						"expression": "performer.where(actor.type='Organization').function.coding.where(code='C' or code='R').exists() implies (performer.all(actor.where(type='Practitioner').exists().not()) or performer.actor.where(type='Practitioner').identifier.where(system='http://fhir.de/sid/bfarm/lbnr').exists())"
+					}
+				]
+			},
+			{
+				"id": "ChargeItem.id",
+				"path": "ChargeItem.id",
+				"mustSupport": false
+			},
+			{
+				"id": "ChargeItem.meta",
+				"path": "ChargeItem.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.meta.security",
+				"path": "ChargeItem.meta.security",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.meta.security.system",
+				"path": "ChargeItem.meta.security.system",
+				"min": 1,
+				"fixedUri": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_Nutzungsbedingung_Version",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.meta.security.code",
+				"path": "ChargeItem.meta.security.code",
+				"min": 1,
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://e-lb.de/fhir/ValueSet/KK_ELB_VS_Nutzungsbedingung_Version"
+				}
+			},
+			{
+				"id": "ChargeItem.implicitRules",
+				"path": "ChargeItem.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.language",
+				"path": "ChargeItem.language",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.text",
+				"path": "ChargeItem.text",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.contained",
+				"path": "ChargeItem.contained",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.extension",
+				"path": "ChargeItem.extension",
+				"min": 1
+			},
+			{
+				"id": "ChargeItem.extension:Payor",
+				"path": "ChargeItem.extension",
+				"sliceName": "Payor",
+				"short": "Kostenträger",
+				"definition": "Identifier des Kostenträgers des Versicherten (subject)",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Extension",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor"
+						]
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false
+			},
+			{
+				"id": "ChargeItem.identifier",
+				"path": "ChargeItem.identifier",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.identifier.system",
+				"path": "ChargeItem.identifier.system",
+				"min": 1,
+				"fixedUri": "urn:ietf:rfc:3986",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.identifier.value",
+				"path": "ChargeItem.identifier.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.definitionUri",
+				"path": "ChargeItem.definitionUri",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.definitionCanonical",
+				"path": "ChargeItem.definitionCanonical",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.status",
+				"path": "ChargeItem.status",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.partOf",
+				"path": "ChargeItem.partOf",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.code",
+				"path": "ChargeItem.code",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.code.coding",
+				"path": "ChargeItem.code.coding",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.code.coding.system",
+				"path": "ChargeItem.code.coding.system",
+				"min": 1,
+				"fixedUri": "https://e-lb.de/fhir/sid/KK_ELB_ChargeItemCode",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.code.coding.code",
+				"path": "ChargeItem.code.coding.code",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.subject",
+				"path": "ChargeItem.subject",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.subject.identifier",
+				"path": "ChargeItem.subject.identifier",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-kvid-10"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.subject.identifier.system",
+				"path": "ChargeItem.subject.identifier.system",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.subject.identifier.value",
+				"path": "ChargeItem.subject.identifier.value",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.context",
+				"path": "ChargeItem.context",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.occurrence[x]",
+				"path": "ChargeItem.occurrence[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "dateTime"
+					},
+					{
+						"code": "Period"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer",
+				"path": "ChargeItem.performer",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "actor.type"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 1,
+				"max": "2",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation",
+				"path": "ChargeItem.performer",
+				"sliceName": "leistungserbringerOrganisation",
+				"comment": "In diesem Slice wird die Leistungserbringer-Organisation bzw. der Leistungserbringer anhand des IKs identifiziert. Die Funktion des Leistungserbringer wird anhand des Sammelgruppenschlüssels in der function angegeben.",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.function",
+				"path": "ChargeItem.performer.function",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.function.coding",
+				"path": "ChargeItem.performer.function.coding",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.function.coding.system",
+				"path": "ChargeItem.performer.function.coding.system",
+				"min": 1,
+				"fixedUri": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.function.coding.code",
+				"path": "ChargeItem.performer.function.coding.code",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.actor",
+				"path": "ChargeItem.performer.actor",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.actor.type",
+				"path": "ChargeItem.performer.actor.type",
+				"min": 1,
+				"fixedUri": "Organization",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.actor.identifier",
+				"path": "ChargeItem.performer.actor.identifier",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.actor.identifier.system",
+				"path": "ChargeItem.performer.actor.identifier.system",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:leistungserbringerOrganisation.actor.identifier.value",
+				"path": "ChargeItem.performer.actor.identifier.value",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:angestellteLeistungserbringerin",
+				"path": "ChargeItem.performer",
+				"sliceName": "angestellteLeistungserbringerin",
+				"comment": "In diesem Slice muss bei einem angestelltenverhältnisses des Leistungserbringers zusätzlich zur IK der Leistungserbringer-Organisation der Name des Leistungserbringers angegeben werden.",
+				"max": "1"
+			},
+			{
+				"id": "ChargeItem.performer:angestellteLeistungserbringerin.actor",
+				"path": "ChargeItem.performer.actor",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"http://hl7.org/fhir/StructureDefinition/Practitioner"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:angestellteLeistungserbringerin.actor.type",
+				"path": "ChargeItem.performer.actor.type",
+				"min": 1,
+				"fixedUri": "Practitioner",
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performer:angestellteLeistungserbringerin.actor.identifier",
+				"path": "ChargeItem.performer.actor.identifier",
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_Identifier_LBNR"
+						]
+					}
+				]
+			},
+			{
+				"id": "ChargeItem.performer:angestellteLeistungserbringerin.actor.display",
+				"path": "ChargeItem.performer.actor.display",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ChargeItem.performingOrganization",
+				"path": "ChargeItem.performingOrganization",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.requestingOrganization",
+				"path": "ChargeItem.requestingOrganization",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.costCenter",
+				"path": "ChargeItem.costCenter",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.quantity",
+				"path": "ChargeItem.quantity",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.bodysite",
+				"path": "ChargeItem.bodysite",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.factorOverride",
+				"path": "ChargeItem.factorOverride",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.priceOverride",
+				"path": "ChargeItem.priceOverride",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.overrideReason",
+				"path": "ChargeItem.overrideReason",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.enterer",
+				"path": "ChargeItem.enterer",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.enteredDate",
+				"path": "ChargeItem.enteredDate",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.service",
+				"path": "ChargeItem.service",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.product[x]",
+				"path": "ChargeItem.product[x]",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.account",
+				"path": "ChargeItem.account",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.note",
+				"path": "ChargeItem.note",
+				"max": "0"
+			},
+			{
+				"id": "ChargeItem.supportingInformation",
+				"path": "ChargeItem.supportingInformation",
+				"max": "0"
+			}
+		]
+	}
+}

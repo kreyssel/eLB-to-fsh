@@ -1,0 +1,26 @@
+{
+	"resourceType": "CodeSystem",
+	"url": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos",
+	"version": "1.0.0",
+	"name": "KK_ELB_CS_HLM_LER_Zusatzinfos",
+	"status": "active",
+	"experimental": false,
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"description": "Abbildung der LER Zusatzinfos Heilmittel",
+	"caseSensitive": true,
+	"content": "complete",
+	"concept": [
+		{
+			"code": "GT",
+			"display": "Änderung in Gruppentherapie"
+		},
+		{
+			"code": "ET",
+			"display": "Änderung in Einzeltherapie"
+		},
+		{
+			"code": "Freq",
+			"display": "Abweichung von der Frequenz"
+		}
+	]
+}

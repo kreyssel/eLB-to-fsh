@@ -1,0 +1,21 @@
+{
+	"resourceType": "CodeSystem",
+	"url": "https://e-lb.de/fhir/CodeSystem/KK_ELB_RequestType",
+	"version": "1.0.0",
+	"name": "KK_ELB_RequestType",
+	"status": "active",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"description": "Requesttypes for eLB",
+	"caseSensitive": true,
+	"content": "complete",
+	"concept": [
+		{
+			"code": "REQUEST_WITH_CALLBACK",
+			"display": "Anfrage mit Verweis auf CallbackURL in source->endpoint"
+		},
+		{
+			"code": "REQUEST_WITH_POLLING",
+			"display": "Anfrage mit Verweis auf Abruf mittels Polling-Schnittstelle"
+		}
+	]
+}

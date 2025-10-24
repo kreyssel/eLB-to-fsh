@@ -1,0 +1,319 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ServiceRequest",
+	"version": "1.0.0",
+	"name": "KK_ELB_ServiceRequest",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "ServiceRequest",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "ServiceRequest.meta",
+				"path": "ServiceRequest.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.meta.profile",
+				"path": "ServiceRequest.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.implicitRules",
+				"path": "ServiceRequest.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.language",
+				"path": "ServiceRequest.language",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.text",
+				"path": "ServiceRequest.text",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.contained",
+				"path": "ServiceRequest.contained",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.identifier",
+				"path": "ServiceRequest.identifier",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.instantiatesCanonical",
+				"path": "ServiceRequest.instantiatesCanonical",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.instantiatesUri",
+				"path": "ServiceRequest.instantiatesUri",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.basedOn",
+				"path": "ServiceRequest.basedOn",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.replaces",
+				"path": "ServiceRequest.replaces",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.requisition",
+				"path": "ServiceRequest.requisition",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.status",
+				"path": "ServiceRequest.status",
+				"fixedCode": "unknown",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.intent",
+				"path": "ServiceRequest.intent",
+				"fixedCode": "order",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.category",
+				"path": "ServiceRequest.category",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.priority",
+				"path": "ServiceRequest.priority",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.doNotPerform",
+				"path": "ServiceRequest.doNotPerform",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.code",
+				"path": "ServiceRequest.code",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.orderDetail",
+				"path": "ServiceRequest.orderDetail",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.quantity[x]",
+				"path": "ServiceRequest.quantity[x]",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				]
+			},
+			{
+				"id": "ServiceRequest.quantity[x].value",
+				"path": "ServiceRequest.quantity[x].value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.quantity[x].unit",
+				"path": "ServiceRequest.quantity[x].unit",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.quantity[x].system",
+				"path": "ServiceRequest.quantity[x].system",
+				"min": 1,
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.quantity[x].code",
+				"path": "ServiceRequest.quantity[x].code",
+				"min": 1,
+				"fixedCode": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.subject",
+				"path": "ServiceRequest.subject",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.subject.identifier",
+				"path": "ServiceRequest.subject.identifier",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-kvid-10"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.subject.identifier.system",
+				"path": "ServiceRequest.subject.identifier.system",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.subject.identifier.value",
+				"path": "ServiceRequest.subject.identifier.value",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.encounter",
+				"path": "ServiceRequest.encounter",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.asNeeded[x]",
+				"path": "ServiceRequest.asNeeded[x]",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.authoredOn",
+				"path": "ServiceRequest.authoredOn",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.requester",
+				"path": "ServiceRequest.requester",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.requester.identifier",
+				"path": "ServiceRequest.requester.identifier",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.requester.identifier.system",
+				"path": "ServiceRequest.requester.identifier.system",
+				"min": 1,
+				"fixedUri": "https://fhir.kbv.de/NamingSystem/KBV_NS_Base_ANR",
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.requester.identifier.value",
+				"path": "ServiceRequest.requester.identifier.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.performerType",
+				"path": "ServiceRequest.performerType",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.performer",
+				"path": "ServiceRequest.performer",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.locationCode",
+				"path": "ServiceRequest.locationCode",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.locationReference",
+				"path": "ServiceRequest.locationReference",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.reasonCode",
+				"path": "ServiceRequest.reasonCode",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.reasonReference",
+				"path": "ServiceRequest.reasonReference",
+				"min": 1,
+				"max": "1",
+				"type": [
+					{
+						"code": "Reference",
+						"targetProfile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_Condition"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.reasonReference.id",
+				"path": "ServiceRequest.reasonReference.id",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.reasonReference.reference",
+				"path": "ServiceRequest.reasonReference.reference",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "ServiceRequest.reasonReference.identifier",
+				"path": "ServiceRequest.reasonReference.identifier",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.reasonReference.display",
+				"path": "ServiceRequest.reasonReference.display",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.insurance",
+				"path": "ServiceRequest.insurance",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.supportingInfo",
+				"path": "ServiceRequest.supportingInfo",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.specimen",
+				"path": "ServiceRequest.specimen",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.bodySite",
+				"path": "ServiceRequest.bodySite",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.note",
+				"path": "ServiceRequest.note",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.patientInstruction",
+				"path": "ServiceRequest.patientInstruction",
+				"max": "0"
+			},
+			{
+				"id": "ServiceRequest.relevantHistory",
+				"path": "ServiceRequest.relevantHistory",
+				"max": "0"
+			}
+		]
+	}
+}

@@ -1,0 +1,309 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_BillingContainerParameters",
+	"version": "1.0.0",
+	"name": "KK_ELB_BillingContainerParameters",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Parameters",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Parameters",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Parameters",
+				"path": "Parameters",
+				"constraint": [
+					{
+						"key": "Bundle-complete",
+						"severity": "error",
+						"human": "Alle Bundle entries müssen im Bundle auflösbar sein",
+						"expression": "%context.parameter.where(resource is Bundle).resource.entry.descendants().reference.distinct().all($this in %context.parameter.where(resource is Bundle).resource.entry.fullUrl.select($this.toString()))"
+					}
+				]
+			},
+			{
+				"id": "Parameters.meta",
+				"path": "Parameters.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.meta.profile",
+				"path": "Parameters.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.implicitRules",
+				"path": "Parameters.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.language",
+				"path": "Parameters.language",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter",
+				"path": "Parameters.parameter",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "name"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 3
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint",
+				"path": "Parameters.parameter",
+				"sliceName": "emailContactPoint",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "emailContactPoint",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "ContactPoint"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].id",
+				"path": "Parameters.parameter.value[x].id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].system",
+				"path": "Parameters.parameter.value[x].system",
+				"min": 1,
+				"fixedCode": "email",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].value",
+				"path": "Parameters.parameter.value[x].value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].use",
+				"path": "Parameters.parameter.value[x].use",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].rank",
+				"path": "Parameters.parameter.value[x].rank",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.value[x].period",
+				"path": "Parameters.parameter.value[x].period",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:emailContactPoint.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:esolFile",
+				"path": "Parameters.parameter",
+				"sliceName": "esolFile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:esolFile.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:esolFile.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "esolFile",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:esolFile.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "base64Binary"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:esolFile.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:esolFile.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice",
+				"path": "Parameters.parameter",
+				"sliceName": "invoice",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "invoice",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part",
+				"path": "Parameters.parameter.part",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "name"
+						}
+					],
+					"rules": "closed"
+				},
+				"definition": "Ein container pro Abrechnungsfall\r\n- Verordnung bei Heilmittel\r\n- Abrechnungsfall = Rechnung bei Hebammen, daher nur 1 Container",
+				"min": 2,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference",
+				"path": "Parameters.parameter.part",
+				"sliceName": "invoiceReference",
+				"definition": "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference.id",
+				"path": "Parameters.parameter.part.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference.name",
+				"path": "Parameters.parameter.part.name",
+				"fixedString": "invoiceReference",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference.value[x]",
+				"path": "Parameters.parameter.part.value[x]",
+				"short": "Belegnummer",
+				"definition": "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer",
+				"min": 1,
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference.resource",
+				"path": "Parameters.parameter.part.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:invoiceReference.part",
+				"path": "Parameters.parameter.part.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container",
+				"path": "Parameters.parameter.part",
+				"sliceName": "Container",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container.id",
+				"path": "Parameters.parameter.part.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container.name",
+				"path": "Parameters.parameter.part.name",
+				"fixedString": "container",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container.value[x]",
+				"path": "Parameters.parameter.part.value[x]",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container.resource",
+				"path": "Parameters.parameter.part.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_InvoiceContainerBundle"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:invoice.part:Container.part",
+				"path": "Parameters.parameter.part.part",
+				"max": "0"
+			}
+		]
+	}
+}

@@ -1,0 +1,241 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle",
+	"version": "1.0.0",
+	"name": "KK_ELB_ResponseDocumentBundle",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Bundle",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Bundle",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Bundle.meta",
+				"path": "Bundle.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.meta.profile",
+				"path": "Bundle.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.implicitRules",
+				"path": "Bundle.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.language",
+				"path": "Bundle.language",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.identifier",
+				"path": "Bundle.identifier",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.identifier.use",
+				"path": "Bundle.identifier.use",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.identifier.type",
+				"path": "Bundle.identifier.type",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.identifier.system",
+				"path": "Bundle.identifier.system",
+				"min": 1,
+				"fixedUri": "urn:ietf:rfc:3986",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.identifier.value",
+				"path": "Bundle.identifier.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.identifier.period",
+				"path": "Bundle.identifier.period",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.identifier.assigner",
+				"path": "Bundle.identifier.assigner",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.type",
+				"path": "Bundle.type",
+				"fixedCode": "document",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.timestamp",
+				"path": "Bundle.timestamp",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.total",
+				"path": "Bundle.total",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.link",
+				"path": "Bundle.link",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.entry",
+				"path": "Bundle.entry",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "profile",
+							"path": "resource"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 2,
+				"max": "2",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:composition",
+				"path": "Bundle.entry",
+				"sliceName": "composition",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:composition.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:composition.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseComposition"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:chargeItem",
+				"path": "Bundle.entry",
+				"sliceName": "chargeItem",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:chargeItem.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:chargeItem.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.type",
+				"path": "Bundle.signature.type",
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.type.system",
+				"path": "Bundle.signature.type.system",
+				"min": 1,
+				"fixedUri": "urn:iso-astm:E1762-95:2013",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.type.code",
+				"path": "Bundle.signature.type.code",
+				"min": 1,
+				"fixedCode": "1.2.840.10065.1.12.1.5",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.when",
+				"path": "Bundle.signature.when",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.who",
+				"path": "Bundle.signature.who",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.who.identifier",
+				"path": "Bundle.signature.who.identifier",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.who.identifier.system",
+				"path": "Bundle.signature.who.identifier.system",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.who.identifier.value",
+				"path": "Bundle.signature.who.identifier.value",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.sigFormat",
+				"path": "Bundle.signature.sigFormat",
+				"min": 1,
+				"fixedCode": "application/signature+xml",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.signature.data",
+				"path": "Bundle.signature.data",
+				"min": 1,
+				"mustSupport": true
+			}
+		]
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"resourceType": "CodeSystem",
+	"url": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_Section_Type",
+	"version": "1.0.0",
+	"name": "KK_ELB_CS_HLM_Section_Type",
+	"status": "active",
+	"experimental": false,
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"description": "Abbildung der Slices in der Section der Composition",
+	"caseSensitive": true,
+	"content": "complete",
+	"concept": [
+		{
+			"code": "HLM",
+			"display": "Vorrangiges Heilmittel"
+		},
+		{
+			"code": "ergaenzendes_HLM",
+			"display": "Ergänzendes Heilmittel"
+		}
+	]
+}

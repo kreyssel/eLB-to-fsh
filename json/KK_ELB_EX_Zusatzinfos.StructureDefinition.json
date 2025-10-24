@@ -1,0 +1,182 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_EX_Zusatzinfos",
+	"version": "1.0.0",
+	"name": "KK_ELB_EX_Zusatzinfos",
+	"status": "draft",
+	"date": "2023-09-11T06:57:53.6658116+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "complex-type",
+	"abstract": false,
+	"context": [
+		{
+			"type": "element",
+			"expression": "Composition"
+		}
+	],
+	"type": "Extension",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Extension.extension",
+				"path": "Extension.extension",
+				"min": 3
+			},
+			{
+				"id": "Extension.extension:therapiebericht",
+				"path": "Extension.extension",
+				"sliceName": "therapiebericht",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiebericht.url",
+				"path": "Extension.extension.url",
+				"fixedUri": "therapiebericht"
+			},
+			{
+				"id": "Extension.extension:therapiebericht.value[x]",
+				"path": "Extension.extension.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "boolean"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:hausbesuch",
+				"path": "Extension.extension",
+				"sliceName": "hausbesuch",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:hausbesuch.url",
+				"path": "Extension.extension.url",
+				"fixedUri": "hausbesuch"
+			},
+			{
+				"id": "Extension.extension:hausbesuch.value[x]",
+				"path": "Extension.extension.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "boolean"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz",
+				"path": "Extension.extension",
+				"sliceName": "therapiefrequenz"
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.url",
+				"path": "Extension.extension.url",
+				"fixedUri": "therapiefrequenz"
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x]",
+				"path": "Extension.extension.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Range"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].low",
+				"path": "Extension.extension.value[x].low",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].low.value",
+				"path": "Extension.extension.value[x].low.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].low.unit",
+				"path": "Extension.extension.value[x].low.unit",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].low.system",
+				"path": "Extension.extension.value[x].low.system",
+				"min": 1,
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].high",
+				"path": "Extension.extension.value[x].high",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].high.value",
+				"path": "Extension.extension.value[x].high.value",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].high.unit",
+				"path": "Extension.extension.value[x].high.unit",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:therapiefrequenz.value[x].high.system",
+				"path": "Extension.extension.value[x].high.system",
+				"min": 1,
+				"fixedUri": "http://unitsofmeasure.org",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:unterschrift",
+				"path": "Extension.extension",
+				"sliceName": "unterschrift",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:unterschrift.url",
+				"path": "Extension.extension.url",
+				"fixedUri": "unterschrift"
+			},
+			{
+				"id": "Extension.extension:unterschrift.value[x]",
+				"path": "Extension.extension.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "boolean"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.url",
+				"path": "Extension.url",
+				"fixedUri": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_EX_Zusatzinfos"
+			},
+			{
+				"id": "Extension.value[x]",
+				"path": "Extension.value[x]",
+				"max": "0"
+			}
+		]
+	}
+}

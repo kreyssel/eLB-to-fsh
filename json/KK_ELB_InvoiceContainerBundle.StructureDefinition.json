@@ -1,0 +1,283 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_InvoiceContainerBundle",
+	"version": "1.0.0",
+	"name": "KK_ELB_InvoiceContainerBundle",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Bundle",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Bundle",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Bundle",
+				"path": "Bundle",
+				"constraint": [
+					{
+						"key": "Therapieart",
+						"severity": "error",
+						"human": "Es darf nicht sowohl ein ServiceRequest mit GT als auch mit ET geben",
+						"expression": "entry.where(resource is ServiceRequest).select(resource.code.coding.where(system='https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos').where(code='GT')).exists() implies entry.where(resource is ServiceRequest).select(resource.code.coding.where(system='https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos').where(code='ET')).exists().not()"
+					},
+					{
+						"key": "DiffTherapieart",
+						"severity": "error",
+						"human": "Jede Therarpieart darf nur einmal innerhalb des Containers vorkommen",
+						"expression": "entry.where(resource is ServiceRequest).select(resource.code.coding.where(system='https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos').code).isDistinct()"
+					}
+				]
+			},
+			{
+				"id": "Bundle.meta",
+				"path": "Bundle.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.meta.profile",
+				"path": "Bundle.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.implicitRules",
+				"path": "Bundle.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.language",
+				"path": "Bundle.language",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.identifier",
+				"path": "Bundle.identifier",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.identifier.system",
+				"path": "Bundle.identifier.system",
+				"min": 1,
+				"fixedUri": "https://e-lb.de/fhir/sid/KK_ELB_Belegnummer",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.identifier.value",
+				"path": "Bundle.identifier.value",
+				"min": 1,
+				"maxLength": 10,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.type",
+				"path": "Bundle.type",
+				"fixedCode": "collection",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.total",
+				"path": "Bundle.total",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.link",
+				"path": "Bundle.link",
+				"max": "0"
+			},
+			{
+				"id": "Bundle.entry",
+				"path": "Bundle.entry",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "profile",
+							"path": "resource"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:SignedChargeItem",
+				"path": "Bundle.entry",
+				"sliceName": "SignedChargeItem",
+				"min": 1,
+				"constraint": [
+					{
+						"key": "sig-1",
+						"severity": "error",
+						"human": "Signature of ChargeItem must be present",
+						"expression": "resource.signature.exists()",
+						"xpath": "exists(f:resource:signature)"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:SignedChargeItem.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:SignedChargeItem.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:BinaryFile",
+				"path": "Bundle.entry",
+				"sliceName": "BinaryFile"
+			},
+			{
+				"id": "Bundle.entry:BinaryFile.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:BinaryFile.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"http://hl7.org/fhir/StructureDefinition/Binary"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:BinaryFile.resource.contentType",
+				"path": "Bundle.entry.resource.contentType",
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:BinaryFile.resource.data",
+				"path": "Bundle.entry.resource.data",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:HebammeAttestServiceRequest",
+				"path": "Bundle.entry",
+				"sliceName": "HebammeAttestServiceRequest"
+			},
+			{
+				"id": "Bundle.entry:HebammeAttestServiceRequest.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:HebammeAttestServiceRequest.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ServiceRequest"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:Condition",
+				"path": "Bundle.entry",
+				"sliceName": "Condition"
+			},
+			{
+				"id": "Bundle.entry:Condition.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:Condition.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_Condition"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:HeilmittelBundle",
+				"path": "Bundle.entry",
+				"sliceName": "HeilmittelBundle"
+			},
+			{
+				"id": "Bundle.entry:HeilmittelBundle.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:HeilmittelBundle.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_DocumentBundle"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:LERZusatzinfoServiceRequest",
+				"path": "Bundle.entry",
+				"sliceName": "LERZusatzinfoServiceRequest",
+				"max": "2"
+			},
+			{
+				"id": "Bundle.entry:LERZusatzinfoServiceRequest.fullUrl",
+				"path": "Bundle.entry.fullUrl",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Bundle.entry:LERZusatzinfoServiceRequest.resource",
+				"path": "Bundle.entry.resource",
+				"min": 1,
+				"type": [
+					{
+						"code": "Resource",
+						"profile": [
+							"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_LER_Zusatzinfos_ServiceRequest"
+						]
+					}
+				],
+				"mustSupport": true
+			}
+		]
+	}
+}

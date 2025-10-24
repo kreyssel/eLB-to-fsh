@@ -1,0 +1,33 @@
+{
+	"resourceType": "CodeSystem",
+	"url": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+	"version": "1.0.0",
+	"name": "KK_ELB_SGS",
+	"status": "active",
+	"date": "2023-09-11T08:32:23.5677212+00:00",
+	"description": "Schlüssel Kennzeichen Leistungserbringer-Sammelgruppenschlüssel",
+	"caseSensitive": true,
+	"content": "complete",
+	"concept": [
+		{
+			"code": "A",
+			"display": "Leistungserbringer von Hilfsmitteln"
+		},
+		{
+			"code": "B",
+			"display": "Leistungserbringer von Heilmitteln"
+		},
+		{
+			"code": "C",
+			"display": "Leistungserbringer von häuslicher Krankenpflege"
+		},
+		{
+			"code": "F",
+			"display": "Hebammen"
+		},
+		{
+			"code": "R",
+			"display": "Außerklinische Intensivpflege"
+		}
+	]
+}

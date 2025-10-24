@@ -1,0 +1,14 @@
+Instance: KK-ELB-NS-HLM-KatalogCode
+InstanceOf: NamingSystem
+Usage: #definition
+* meta.profile = "http://fhir.de/StructureDefinition/namingsystem-de-basis"
+* name = "KK_ELB_NS_HLM_KatalogCode"
+* status = #active
+* kind = #codesystem
+* date = "2023-09-11T06:57:53.6658116+00:00"
+* description = "Code gemäß Heilmittelkatalog"
+* usage = "Angabe der vom Arzt verordneten Leistung (Code gemäß dem Katalog für Heilmittel)"
+* uniqueId.type = #uri
+* uniqueId.value = "https://e-lb.de/fhir/sid/KK_ELB_HLM_Katalog"
+* uniqueId.preferred = true
+* uniqueId.period.start = "2023-09-05"

@@ -1,0 +1,221 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_PollingRequest",
+	"version": "1.0.0",
+	"name": "KK_ELB_PollingRequest",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Parameters",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Parameters",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Parameters.meta",
+				"path": "Parameters.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.meta.profile",
+				"path": "Parameters.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.implicitRules",
+				"path": "Parameters.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.language",
+				"path": "Parameters.language",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter",
+				"path": "Parameters.parameter",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "name"
+						}
+					],
+					"rules": "closed"
+				},
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem",
+				"path": "Parameters.parameter",
+				"sliceName": "byRequestingSystem",
+				"max": "1"
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "requestingSystem",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byRequestingSystem.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization",
+				"path": "Parameters.parameter",
+				"sliceName": "byPerformingOrganization",
+				"max": "1"
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "performingOrganization",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPerformingOrganization.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPatient",
+				"path": "Parameters.parameter",
+				"sliceName": "byPatient",
+				"max": "1"
+			},
+			{
+				"id": "Parameters.parameter:byPatient.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPatient.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "patient",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPatient.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-kvid-10"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPatient.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPatient.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPayor",
+				"path": "Parameters.parameter",
+				"sliceName": "byPayor",
+				"max": "1"
+			},
+			{
+				"id": "Parameters.parameter:byPayor.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPayor.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "payor",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPayor.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "Identifier",
+						"profile": [
+							"http://fhir.de/StructureDefinition/identifier-iknr"
+						]
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter:byPayor.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter:byPayor.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			}
+		]
+	}
+}

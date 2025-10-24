@@ -1,0 +1,79 @@
+{
+	"resourceType": "StructureDefinition",
+	"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ConfirmationOfResponse",
+	"version": "1.0.0",
+	"name": "KK_ELB_ConfirmationOfResponse",
+	"status": "draft",
+	"date": "2023-04-13T09:00:58.8118673+00:00",
+	"fhirVersion": "4.0.1",
+	"kind": "resource",
+	"abstract": false,
+	"type": "Parameters",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Parameters",
+	"derivation": "constraint",
+	"differential": {
+		"element": [
+			{
+				"id": "Parameters.meta",
+				"path": "Parameters.meta",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.meta.profile",
+				"path": "Parameters.meta.profile",
+				"min": 1,
+				"max": "1",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.implicitRules",
+				"path": "Parameters.implicitRules",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.language",
+				"path": "Parameters.language",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter",
+				"path": "Parameters.parameter",
+				"min": 1,
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter.id",
+				"path": "Parameters.parameter.id",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter.name",
+				"path": "Parameters.parameter.name",
+				"fixedString": "confirmationBundleUuid",
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter.value[x]",
+				"path": "Parameters.parameter.value[x]",
+				"min": 1,
+				"type": [
+					{
+						"code": "uuid"
+					}
+				],
+				"mustSupport": true
+			},
+			{
+				"id": "Parameters.parameter.resource",
+				"path": "Parameters.parameter.resource",
+				"max": "0"
+			},
+			{
+				"id": "Parameters.parameter.part",
+				"path": "Parameters.parameter.part",
+				"max": "0"
+			}
+		]
+	}
+}
