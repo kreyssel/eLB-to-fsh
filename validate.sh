@@ -18,14 +18,16 @@ fi
 # Prüfen, ob Kommandozeilenparameter übergeben wurden
 if [ $# -eq 0 ]; then
   # Keine Parameter, verwende ./Beispiele/**
-  SRC_DIR=$SCRIPT_DIR/xml/Beispiele/**
+  SRC_DIR=$SCRIPT_DIR/xml/Beispiele/
 else
   # Parameter wurde angegeben, verwende diese
   SRC_DIR=$@
 fi
 
-FILES_TO_VALIDATE=$(find $SRC_DIR -type f \( -name "*.xml" \) -print0 | xargs -0 -I{} printf "\"%s\" " "{}")
+# alle zu prüfenden Dateien ermitteln
+readarray -d '' files < <(find "$SRC_DIR" -type f -name "*.xml" -print0)
 
 # run validation
-java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" $FILES_TO_VALIDATE -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4
+java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4
+#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4 $@
 #java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" $FILES_TO_VALIDATE -version 4.0 -ig "$(pwd)/xml" -ig de.basisprofil.r4#1.4.0 
