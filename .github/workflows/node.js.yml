@@ -19,9 +19,12 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
+    - uses: actions/setup-node@v6
+      with:
+        node-version: '24.10'
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.1'
+        ruby-version: '3.4'
     - uses: actions/checkout@v4
     - run: gem install jekyll
     - run: npm install -g fsh-sushi
