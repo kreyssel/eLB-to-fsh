@@ -1,15 +1,17 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VALIDATOR_DIR=$SCRIPT_DIR/.validator
+VALIDATOR_JAR=$VALIDATOR_JAR
 
 # create .validator base folder
-if [ ! -d "$SCRIPT_DIR/.validator" ]; then
-  mkdir "$SCRIPT_DIR/.validator"
+if [ ! -d "$VALIDATOR_DIR" ]; then
+  mkdir "$VALIDATOR_DIR"
 fi
 
 # Download validator if not exists
-if [ ! -f "$SCRIPT_DIR/.validator/validator_cli.jar" ]; then
-  curl -L -o "$SCRIPT_DIR/.validator/validator_cli.jar" https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
+if [ ! -f "$VALIDATOR_JAR" ]; then
+  wget --no-verbose -O "$VALIDATOR_JAR" https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
 fi
 
 # Prüfen, ob Kommandozeilenparameter übergeben wurden
@@ -24,5 +26,5 @@ fi
 FILES_TO_VALIDATE=$(find $SRC_DIR -type f \( -name "*.xml" \) -print0 | xargs -0 -I{} printf "\"%s\" " "{}")
 
 # run validation
-java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" $FILES_TO_VALIDATE -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4
-#java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" $FILES_TO_VALIDATE -version 4.0 -ig "$(pwd)/xml" -ig de.basisprofil.r4#1.4.0 
+java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" $FILES_TO_VALIDATE -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4
+#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" $FILES_TO_VALIDATE -version 4.0 -ig "$(pwd)/xml" -ig de.basisprofil.r4#1.4.0 
