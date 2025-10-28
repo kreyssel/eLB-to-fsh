@@ -13,6 +13,7 @@ fi
 
 # Download validator if not exists
 if [ ! -f "$PUBLISHER_JAR" ]; then
+  echo "download publisher.jar"
   wget --no-verbose -O "$PUBLISHER_JAR" https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar
 fi
 

@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VALIDATOR_DIR=$SCRIPT_DIR/.validator
-VALIDATOR_JAR=$VALIDATOR_JAR
+VALIDATOR_JAR=$VALIDATOR_DIR/validator_cli.jar
 
 # create .validator base folder
 if [ ! -d "$VALIDATOR_DIR" ]; then
@@ -11,6 +11,7 @@ fi
 
 # Download validator if not exists
 if [ ! -f "$VALIDATOR_JAR" ]; then
+  echo "download validator_cli.jar"
   wget --no-verbose -O "$VALIDATOR_JAR" https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
 fi
 
