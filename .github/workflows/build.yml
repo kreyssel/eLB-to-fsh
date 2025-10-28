@@ -21,10 +21,12 @@ jobs:
         distribution: 'temurin'
     - uses: actions/setup-node@v6
       with:
-        node-version: '24.10'
+        node-version: '24'
+        cache: 'npm'
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.4'
+        bundler-cache: true 
     - uses: actions/checkout@v4
     - run: gem install jekyll
     - run: npm install -g fsh-sushi
