@@ -15,14 +15,14 @@ fi
 # Prüfen, ob Kommandozeilenparameter übergeben wurden
 if [ $# -eq 0 ]; then
   # Keine Parameter, verwende ./Beispiele/**
-  PARAMS="./Beispiele/**"
+  SRC_DIR=$SCRIPT_DIR/xml/Beispiele/**
 else
   # Parameter wurde angegeben, verwende diese
-  PARAMS="$@"
+  SRC_DIR=$@
 fi
 
-PROFILES=$(echo "$SCRIPT_DIR/fsh/fsh-generated/resources/*.json" | xargs -n1 printf -- "-profile %s ")
+FILES_TO_VALIDATE=$(find $SRC_DIR -type f \( -name "*.xml" \) -print0 | xargs -0 -I{} printf "\"%s\" " "{}")
 
 # run validation
-java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" "$PARAMS" -version 4.0 -ig "$SCRIPT_DIR/fsh/fsh-generated/resources" -ig de.basisprofil.r4#1.4.0
-#java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" "$PARAMS" -version 4.0 -ig "$(pwd)/xml" -ig de.basisprofil.r4#1.4.0 
+java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" $FILES_TO_VALIDATE -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4
+#java -Dfile.encoding=UTF-8 -jar "$SCRIPT_DIR/.validator/validator_cli.jar" $FILES_TO_VALIDATE -version 4.0 -ig "$(pwd)/xml" -ig de.basisprofil.r4#1.4.0 

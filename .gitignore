@@ -1,5 +1,7 @@
 .simplifier
 .validator
+.publisher
+
 fhirpkg.lock.json
 
 fsh/fsh-generated
