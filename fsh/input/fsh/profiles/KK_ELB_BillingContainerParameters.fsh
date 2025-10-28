@@ -43,7 +43,9 @@ Parent: Parameters
 * parameter[invoice].part ^slicing.discriminator.path = "name"
 * parameter[invoice].part ^slicing.rules = #closed
 * parameter[invoice].part ^definition = "Ein container pro Abrechnungsfall\r\n- Verordnung bei Heilmittel\r\n- Abrechnungsfall = Rechnung bei Hebammen, daher nur 1 container"
-* parameter[invoice].part contains invoiceReference 1..1 MS
+* parameter[invoice].part contains
+    invoiceReference 1..1 MS and
+    container 1..1 MS
 * parameter[invoice].part[invoiceReference] ^definition = "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer"
 * parameter[invoice].part[invoiceReference].id ..0
 * parameter[invoice].part[invoiceReference].name = "invoiceReference" (exactly)
@@ -54,7 +56,6 @@ Parent: Parameters
 * parameter[invoice].part[invoiceReference].value[x] ^definition = "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer"
 * parameter[invoice].part[invoiceReference].resource ..0
 * parameter[invoice].part[invoiceReference].part ..0
-* parameter[invoice].part contains container 1..1 MS
 * parameter[invoice].part[container].id ..0
 * parameter[invoice].part[container].name = "container" (exactly)
 * parameter[invoice].part[container].name MS

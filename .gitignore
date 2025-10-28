@@ -7,3 +7,6 @@ fsh/input-cache
 fsh/temp
 fsh/output
 fsh/template
+
+node_modules
+fsh/node_modules

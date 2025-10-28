@@ -1,5 +1,4 @@
 CodeSystem: KBV_CS_SFHIR_ICD_DIAGNOSESICHERHEIT
-Id: KBV-CS-SFHIR-ICD-DIAGNOSESICHERHEIT
 Description: "Die Diagnosesicherheit gibt an, wie sicher eine gestellte Diagnose ist. Es handelt sich hier um Zusatzkennzeichen zur Diagnose (ICD-10) im ambulanten Bereich. Die Angaben zur Diagnosesicherheit entsprechen der Vorgabe im KVDT."
 * ^url = "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_ICD_DIAGNOSESICHERHEIT"
 * ^identifier.system = "urn:ietf:rfc:3986"
