@@ -1,0 +1,18 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+sushi
+
+if [[ $? -ne 0 ]]; then
+  echo "Fehler beim Ausführen von sushi. Prüfen wird abgebrochen."
+  exit 1
+fi
+
+"$SCRIPT_DIR/../validate.sh" "$1"
+
+if [[ $? -ne 0 ]]; then
+  echo ""
+  echo "Validierungs Fehler festgestellt!"
+  exit 1
+fi

@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "profile": [
+      "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseParameters"
+    ]
+  },
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "valueContactPoint": {
+        "system": "email",
+        "value": "bestaetigungssystem@example.com"
+      },
+      "name": "emailContactPoint"
+    },
+    {
+      "valueString": "bestaetigungssystem.example.com@1.0.9",
+      "name": "softwareIdentifier"
+    },
+    {
+      "resource": {
+        "meta": {
+          "profile": [
+            "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle"
+          ]
+        },
+        "type": "document",
+        "signature": {
+          "who": {
+            "identifier": {
+              "system": "http://fhir.de/sid/arge-ik/iknr",
+              "value": "123456780"
+            }
+          },
+          "when": "2022-07-07T10:42:53.333208+02:00",
+          "sigFormat": "application/signature+xml",
+          "data": "TG9yZW0gaXBzdW0gZG9sciBzaXI=",
+          "type": [
+            {
+              "system": "urn:iso-astm:E1762-95:2013",
+              "code": "1.2.840.10065.1.12.1.5"
+            }
+          ]
+        },
+        "identifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:4444d555-666e-77a8-999c-222222b2d33c"
+        },
+        "resourceType": "Bundle",
+        "entry": [
+          {
+            "fullUrl": "urn:uuid:a8fe9ff0-57a4-49b9-b15d-762cab488531",
+            "resource": {
+              "meta": {
+                "profile": [
+                  "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseComposition"
+                ]
+              },
+              "title": "Elektronische Leistungsbestätigung",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://dvmd.de/fhir/CodeSystem/kdl",
+                    "code": "AM190107"
+                  }
+                ]
+              },
+              "status": "final",
+              "author": [
+                {
+                  "identifier": {
+                    "system": "http://fhir.de/sid/arge-ik/iknr",
+                    "value": "123456780"
+                  }
+                }
+              ],
+              "resourceType": "Composition",
+              "date": "2022-06-19T08:00:00Z",
+              "section": [
+                {
+                  "entry": [
+                    {
+                      "reference": "urn:uuid:ef0cfed1-d609-42f6-b2bc-b254534db780"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fullUrl": "urn:uuid:ef0cfed1-d609-42f6-b2bc-b254534db780",
+            "resource": {
+              "meta": {
+                "security": [
+                  {
+                    "system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_Nutzungsbedingung_Version",
+                    "code": "1"
+                  }
+                ],
+                "profile": [
+                  "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+                ]
+              },
+              "extension": [
+                {
+                  "url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor",
+                  "valueIdentifier": {
+                    "system": "http://fhir.de/sid/arge-ik/iknr",
+                    "value": "101575519"
+                  }
+                }
+              ],
+              "code": {
+                "coding": [
+                  {
+                    "system": "https://e-lb.de/fhir/sid/KK_ELB_ChargeItemCode",
+                    "code": "31600"
+                  }
+                ]
+              },
+              "status": "billable",
+              "subject": {
+                "identifier": {
+                  "system": "http://fhir.de/sid/gkv/kvid-10",
+                  "value": "K121212345"
+                }
+              },
+              "identifier": [
+                {
+                  "system": "urn:ietf:rfc:3986",
+                  "value": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc9dbdb111c2"
+                }
+              ],
+              "resourceType": "ChargeItem",
+              "occurrencePeriod": {
+                "start": "2022-06-12T16:50:00+00:00",
+                "end": "2022-06-12T17:50:00+00:00"
+              },
+              "performer": [
+                {
+                  "actor": {
+                    "identifier": {
+                      "system": "http://fhir.de/sid/arge-ik/iknr",
+                      "value": "123456789"
+                    },
+                    "display": "Sarah Schneider",
+                    "type": "Organization"
+                  },
+                  "function": {
+                    "coding": [
+                      {
+                        "system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+                        "code": "F"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "timestamp": "2022-06-20T08:30:00Z"
+      },
+      "name": "responseBundle"
+    },
+    {
+      "resource": {
+        "meta": {
+          "profile": [
+            "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle"
+          ]
+        },
+        "type": "document",
+        "identifier": {
+          "system": "urn:ietf:rfc:3986",
+          "value": "urn:uuid:385a9ea0-33f1-49c7-be05-976cab6ca066"
+        },
+        "resourceType": "Bundle",
+        "entry": [
+          {
+            "fullUrl": "urn:uuid:d057c5c8-8a87-44dc-ac1d-636c290d8d63",
+            "resource": {
+              "meta": {
+                "profile": [
+                  "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseComposition"
+                ]
+              },
+              "title": "Elektronische Leistungsbestätigung",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://dvmd.de/fhir/CodeSystem/kdl",
+                    "code": "AM190107"
+                  }
+                ]
+              },
+              "status": "final",
+              "author": [
+                {
+                  "identifier": {
+                    "system": "http://fhir.de/sid/arge-ik/iknr",
+                    "value": "123456780"
+                  }
+                }
+              ],
+              "resourceType": "Composition",
+              "date": "2022-06-19T08:00:00Z",
+              "section": [
+                {
+                  "entry": [
+                    {
+                      "reference": "urn:uuid:d83534b6-17df-4e96-9a5d-e9faa9535e0a"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "fullUrl": "urn:uuid:d83534b6-17df-4e96-9a5d-e9faa9535e0a",
+            "resource": {
+              "meta": {
+                "security": [
+                  {
+                    "system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_Nutzungsbedingung_Version",
+                    "code": "1"
+                  }
+                ],
+                "profile": [
+                  "https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+                ]
+              },
+              "extension": [
+                {
+                  "url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor",
+                  "valueIdentifier": {
+                    "system": "http://fhir.de/sid/arge-ik/iknr",
+                    "value": "101575519"
+                  }
+                }
+              ],
+              "code": {
+                "coding": [
+                  {
+                    "system": "https://e-lb.de/fhir/sid/KK_ELB_ChargeItemCode",
+                    "code": "31600"
+                  }
+                ]
+              },
+              "status": "not-billable",
+              "subject": {
+                "identifier": {
+                  "system": "http://fhir.de/sid/gkv/kvid-10",
+                  "value": "K121212345"
+                }
+              },
+              "identifier": [
+                {
+                  "system": "urn:ietf:rfc:3986",
+                  "value": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc9dbdb111c2"
+                }
+              ],
+              "resourceType": "ChargeItem",
+              "occurrencePeriod": {
+                "start": "2022-06-12T16:50:00+00:00",
+                "end": "2022-06-12T17:50:00+00:00"
+              },
+              "performer": [
+                {
+                  "actor": {
+                    "identifier": {
+                      "system": "http://fhir.de/sid/arge-ik/iknr",
+                      "value": "123456722"
+                    },
+                    "display": "Sabine Schuster",
+                    "type": "Organization"
+                  },
+                  "function": {
+                    "coding": [
+                      {
+                        "system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+                        "code": "F"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "timestamp": "2022-06-20T08:30:00Z"
+      },
+      "name": "responseBundle"
+    }
+  ]
+}

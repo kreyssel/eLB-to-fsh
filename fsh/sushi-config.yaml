@@ -1,6 +1,6 @@
 name: KK_ELB
 id: KK-ELB
-canonical: http://e-lb.de
+canonical: http://e-lb.de/fhir
 title: KK_ELB
 description: "FHIR Profile für die Elektronische Leistungsbestätigung"
 status: draft # draft | active | retired | unknown

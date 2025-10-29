@@ -1,65 +1,74 @@
-Profile: KK_ELB_BillingcontainerParameters
+Profile: KK_ELB_BillingContainerParameters
 Parent: Parameters
+Id: KK_ELB_BillingContainerParameters
+* ^url = "https://e-lb.de/fhir/StructureDefinition/KK_ELB_BillingContainerParameters"
 * obeys Bundle-complete
 * meta 1.. MS
-* meta.profile 1..1 MS
+  * profile 1..1 MS
 * implicitRules ..0
 * language ..0
 * parameter ^slicing.discriminator.type = #value
-* parameter ^slicing.discriminator.path = "name"
-* parameter ^slicing.rules = #closed
+  * ^slicing.discriminator.path = "name"
+  * ^slicing.rules = #closed
 * parameter contains
     emailContactPoint 1..1 MS and
     esolFile 1..1 MS and
     invoice 1..* MS
-* parameter[emailContactPoint].id ..0
-* parameter[emailContactPoint].name = "emailContactPoint" (exactly)
-* parameter[emailContactPoint].name MS
-* parameter[emailContactPoint].value[x] 1.. MS
-* parameter[emailContactPoint].value[x] only ContactPoint
-* parameter[emailContactPoint].value[x].id ..0
-* parameter[emailContactPoint].value[x].system 1.. MS
-* parameter[emailContactPoint].value[x].system = #email (exactly)
-* parameter[emailContactPoint].value[x].value 1.. MS
-* parameter[emailContactPoint].value[x].use ..0
-* parameter[emailContactPoint].value[x].rank ..0
-* parameter[emailContactPoint].value[x].period ..0
-* parameter[emailContactPoint].resource ..0
-* parameter[emailContactPoint].part ..0
-* parameter[esolFile].id ..0
-* parameter[esolFile].name = "esolFile" (exactly)
-* parameter[esolFile].name MS
-* parameter[esolFile].value[x] 1.. MS
-* parameter[esolFile].value[x] only base64Binary
-* parameter[esolFile].resource ..0
-* parameter[esolFile].part ..0
-* parameter[invoice].id ..0
-* parameter[invoice].name = "invoice" (exactly)
-* parameter[invoice].name MS
-* parameter[invoice].value[x] ..0
-* parameter[invoice].resource ..0
-* parameter[invoice].part MS
-* parameter[invoice].part ^slicing.discriminator.type = #value
-* parameter[invoice].part ^slicing.discriminator.path = "name"
-* parameter[invoice].part ^slicing.rules = #closed
-* parameter[invoice].part ^definition = "Ein container pro Abrechnungsfall\r\n- Verordnung bei Heilmittel\r\n- Abrechnungsfall = Rechnung bei Hebammen, daher nur 1 container"
-* parameter[invoice].part contains
-    invoiceReference 1..1 MS and
-    container 1..1 MS
-* parameter[invoice].part[invoiceReference] ^definition = "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer"
-* parameter[invoice].part[invoiceReference].id ..0
-* parameter[invoice].part[invoiceReference].name = "invoiceReference" (exactly)
-* parameter[invoice].part[invoiceReference].name MS
-* parameter[invoice].part[invoiceReference].value[x] 1.. MS
-* parameter[invoice].part[invoiceReference].value[x] only string
-* parameter[invoice].part[invoiceReference].value[x] ^short = "Belegnummer"
-* parameter[invoice].part[invoiceReference].value[x] ^definition = "Belegnummer, übereinstimmend mit der in der DTA Datei angegebenen Belegnummer"
-* parameter[invoice].part[invoiceReference].resource ..0
-* parameter[invoice].part[invoiceReference].part ..0
-* parameter[invoice].part[container].id ..0
-* parameter[invoice].part[container].name = "container" (exactly)
-* parameter[invoice].part[container].name MS
-* parameter[invoice].part[container].value[x] ..0
-* parameter[invoice].part[container].resource 1.. MS
-* parameter[invoice].part[container].resource only $invoice-container-bundle
-* parameter[invoice].part[container].part ..0
+* parameter[emailContactPoint]
+  * id ..0
+  * name = "emailContactPoint" (exactly)
+  * name MS
+  * value[x] 1.. MS
+  * value[x] only ContactPoint
+    * id ..0
+    * system 1.. MS
+    * system = #email (exactly)
+    * value 1.. MS
+    * use ..0
+    * rank ..0
+    * period ..0
+  * resource ..0
+  * part ..0
+* parameter[esolFile]
+  * id ..0
+  * name = "esolFile" (exactly)
+  * name MS
+  * value[x] 1.. MS
+  * value[x] only base64Binary
+  * resource ..0
+  * part ..0
+* parameter[invoice]
+  * id ..0
+  * name = "invoice" (exactly)
+  * name MS
+  * value[x] ..0
+  * resource ..0
+  * part MS
+    * ^slicing.discriminator.type = #value
+    * ^slicing.discriminator.path = "name"
+    * ^slicing.rules = #closed
+    * ^definition = "Ein container pro Abrechnungsfall\r\n- Verordnung bei Heilmittel\r\n- Abrechnungsfall = Rechnung bei Hebammen, daher nur 1 Container"
+  * part contains 
+      invoiceReference 1..1 MS and
+      container 1..1 MS
+  * part[invoiceReference] 
+    * ^short = "Parameter Rechnungsnummer"
+    * ^definition = "Parameter Rechnungsnummer, übereinstimmend mit der in der DTA Datei angegebenen Rechnungsnummer"
+    * id ..0
+    * name = "invoiceReference" (exactly)
+    * name MS
+    * value[x] 1.. MS
+    * value[x] only string
+      * ^short = "Rechnungsnummer"
+      * ^definition = "Rechnungsnummer, übereinstimmend mit der in der DTA Datei angegebenen Rechnungsnummer"
+    * resource ..0
+    * part ..0
+  * part[container] 
+    * ^definition = "Alle Belege für eine Rechnung"
+    * id ..0
+    * name = "container" (exactly)
+    * name MS
+    * value[x] ..0
+    * resource 1.. MS
+    * resource only $KK_ELB_InvoiceContainerBundle
+    * part ..0

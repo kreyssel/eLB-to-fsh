@@ -7,8 +7,9 @@ Usage: #definition
 * kind = #codesystem
 * date = "2023-09-11T06:57:53.6658116+00:00"
 * description = "Belegnummer"
-* usage = "Die Belegnummer ist anzugeben."
-* uniqueId.type = #uri
-* uniqueId.value = "https://e-lb.de/fhir/sid/KK_ELB_Belegnummer"
-* uniqueId.preferred = true
-* uniqueId.period.start = "2023-09-05"
+* usage = "Die in den Abrechnungdaten verwendete Belegnummer ist anzugeben."
+* uniqueId
+  * type = #uri
+  * value = "https://e-lb.de/fhir/sid/KK_ELB_Belegnummer"
+  * preferred = true
+  * period.start = "2023-09-05"
