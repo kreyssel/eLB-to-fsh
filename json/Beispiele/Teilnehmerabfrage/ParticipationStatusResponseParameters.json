@@ -1,0 +1,14 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ParticipationStatusResponseParameters"
+		]
+	},
+	"parameter": [
+		{
+			"name": "isParticipating",
+			"valueBoolean": true
+		}
+	]
+}

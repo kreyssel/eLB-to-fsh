@@ -1,0 +1,24 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ParticipationStatusRequestParameters"
+		]
+	},
+	"parameter": [
+		{
+			"name": "patient",
+			"valueIdentifier": {
+				"system": "http://fhir.de/sid/gkv/kvid-10",
+				"value": "K123456789"
+			}
+		},
+		{
+			"name": "payor",
+			"valueIdentifier": {
+				"system": "http://fhir.de/sid/arge-ik/iknr",
+				"value": "101575519"
+			}
+		}
+	]
+}

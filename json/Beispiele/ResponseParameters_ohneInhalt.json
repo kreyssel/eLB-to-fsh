@@ -1,0 +1,21 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseParameters"
+		]
+	},
+	"parameter": [
+		{
+			"name": "emailContactPoint",
+			"valueContactPoint": {
+				"system": "email",
+				"value": "bestaetigungssystem@example.com"
+			}
+		},
+		{
+			"name": "softwareIdentifier",
+			"valueString": "bestaetigungssystem.example.com@1.0.9"
+		}
+	]
+}

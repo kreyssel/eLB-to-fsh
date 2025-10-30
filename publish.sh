@@ -11,7 +11,7 @@ if [ ! -d "$PUBLISHER_DIR" ]; then
   mkdir "$PUBLISHER_DIR"
 fi
 
-# Download validator if not exists
+# Download publisher.jar if not exists
 if [ ! -f "$PUBLISHER_JAR" ]; then
   echo "download publisher.jar"
   wget --no-verbose -O "$PUBLISHER_JAR" https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar

@@ -1,0 +1,17 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_PollingRequest"
+		]
+	},
+	"parameter": [
+		{
+			"name": "requestingSystem",
+			"valueIdentifier": {
+				"system": "http://fhir.de/sid/arge-ik/iknr",
+				"value": "123456780"
+			}
+		}
+	]
+}

@@ -11,8 +11,13 @@ fi
 
 "$SCRIPT_DIR/../validate.sh" "$1"
 
+echo ""
+
 if [[ $? -ne 0 ]]; then
-  echo ""
   echo "Validierungs Fehler festgestellt!"
   exit 1
+else
+  echo "Validierung erfolgreich - es wurden keine Fehler festgestellt."
 fi
+
+echo ""

@@ -1,0 +1,446 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_BillingContainerParameters"
+		]
+	},
+	"parameter": [
+		{
+			"name": "emailContactPoint",
+			"valueContactPoint": {
+				"system": "email",
+				"value": "endpointmanager@example.org"
+			}
+		},
+		{
+			"name": "esolFile",
+			"valueBase64Binary": "bG9yZW0gaXBzdW0="
+		},
+		{
+			"name": "invoice",
+			"part": [
+				{
+					"name": "invoiceReference",
+					"valueString": "20230001"
+				},
+				{
+					"name": "container",
+					"resource": {
+						"resourceType": "Bundle",
+						"meta": {
+							"profile": [
+								"https://e-lb.de/fhir/StructureDefinition/KK_ELB_InvoiceContainerBundle"
+							]
+						},
+						"identifier": {
+							"system": "https://e-lb.de/fhir/sid/KK_ELB_Belegnummer",
+							"value": "1"
+						},
+						"type": "collection",
+						"entry": [
+							{
+								"fullUrl": "urn:uuid:308d698c-faae-4787-b57b-4f503d36a35f",
+								"resource": {
+									"resourceType": "Bundle",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle"
+										]
+									},
+									"identifier": {
+										"system": "urn:ietf:rfc:3986",
+										"value": "urn:uuid:4444d555-666e-77a8-999c-222222b2d33c"
+									},
+									"type": "document",
+									"timestamp": "2022-06-20T08:30:00Z",
+									"entry": [
+										{
+											"fullUrl": "urn:uuid:765969d7-68ca-4c05-af50-6d33b8a9521b",
+											"resource": {
+												"resourceType": "Composition",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseComposition"
+													]
+												},
+												"status": "final",
+												"type": {
+													"coding": [
+														{
+															"system": "http://dvmd.de/fhir/CodeSystem/kdl",
+															"code": "AM190107"
+														}
+													]
+												},
+												"date": "2022-06-19T08:00:00Z",
+												"author": [
+													{
+														"identifier": {
+															"system": "http://fhir.de/sid/arge-ik/iknr",
+															"value": "123456780"
+														}
+													}
+												],
+												"title": "Elektronische Leistungsbestätigung",
+												"section": [
+													{
+														"entry": [
+															{
+																"reference": "urn:uuid:5a7e1e02-805b-4a46-8d8a-d49921edf413",
+																"_reference": {
+																	"fhir_comments": [
+																		"  Referenz auf ChargeItem   "
+																	]
+																}
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"fullUrl": "urn:uuid:5a7e1e02-805b-4a46-8d8a-d49921edf413",
+											"resource": {
+												"resourceType": "ChargeItem",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+													],
+													"security": [
+														{
+															"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_Nutzungsbedingung_Version",
+															"code": "1"
+														}
+													]
+												},
+												"extension": [
+													{
+														"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor",
+														"valueIdentifier": {
+															"system": "http://fhir.de/sid/arge-ik/iknr",
+															"value": "101575519"
+														}
+													}
+												],
+												"identifier": [
+													{
+														"system": "urn:ietf:rfc:3986",
+														"value": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc9dbdb111c2"
+													}
+												],
+												"status": "billable",
+												"code": {
+													"coding": [
+														{
+															"system": "https://e-lb.de/fhir/sid/KK_ELB_ChargeItemCode",
+															"code": "31600"
+														}
+													]
+												},
+												"subject": {
+													"identifier": {
+														"system": "http://fhir.de/sid/gkv/kvid-10",
+														"value": "K121212345"
+													}
+												},
+												"occurrencePeriod": {
+													"start": "2022-06-12T16:50:00+00:00",
+													"end": "2022-06-12T17:50:00+00:00"
+												},
+												"performer": [
+													{
+														"function": {
+															"coding": [
+																{
+																	"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+																	"code": "B"
+																}
+															]
+														},
+														"actor": {
+															"type": "Organization",
+															"identifier": {
+																"system": "http://fhir.de/sid/arge-ik/iknr",
+																"value": "123456789"
+															},
+															"display": "Sarah Schneider"
+														}
+													}
+												]
+											}
+										}
+									],
+									"signature": {
+										"type": [
+											{
+												"system": "urn:iso-astm:E1762-95:2013",
+												"code": "1.2.840.10065.1.12.1.5"
+											}
+										],
+										"when": "2022-07-07T10:42:53.333208+02:00",
+										"who": {
+											"identifier": {
+												"system": "http://fhir.de/sid/arge-ik/iknr",
+												"value": "123456780"
+											}
+										},
+										"sigFormat": "application/signature+xml",
+										"data": "TG9yZW0gaXBzdW0gZG9sciBzaXI="
+									}
+								}
+							},
+							{
+								"fullUrl": "urn:uuid:60415140-e385-4700-83c8-a7e11dcff234",
+								"resource": {
+									"resourceType": "Bundle",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_DocumentBundle"
+										]
+									},
+									"identifier": {
+										"system": "urn:ietf:rfc:3986",
+										"value": "urn:uuid:4444d555-666e-77a8-222c-222222b2d33c"
+									},
+									"type": "document",
+									"timestamp": "2022-06-20T08:30:00Z",
+									"entry": [
+										{
+											"fullUrl": "urn:uuid:af8fb653-1eac-42af-b9aa-5dcbb1f893de",
+											"resource": {
+												"resourceType": "Composition",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_Composition"
+													]
+												},
+												"extension": [
+													{
+														"extension": [
+															{
+																"url": "therapiebericht",
+																"valueBoolean": true
+															},
+															{
+																"url": "hausbesuch",
+																"valueBoolean": false
+															},
+															{
+																"url": "therapiefrequenz",
+																"valueRange": {
+																	"low": {
+																		"value": 1,
+																		"unit": "wk",
+																		"system": "http://unitsofmeasure.org"
+																	},
+																	"high": {
+																		"value": 2,
+																		"unit": "wk",
+																		"system": "http://unitsofmeasure.org"
+																	}
+																}
+															},
+															{
+																"url": "unterschrift",
+																"valueBoolean": true
+															}
+														],
+														"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_EX_Zusatzinfos"
+													}
+												],
+												"status": "final",
+												"type": {
+													"coding": [
+														{
+															"code": "e13A"
+														}
+													]
+												},
+												"date": "2022-06-19T08:00:00Z",
+												"author": [
+													{
+														"identifier": {
+															"system": "http://fhir.de/sid/arge-ik/iknr",
+															"value": "123456780"
+														}
+													}
+												],
+												"title": "Elektronische Verordnung Heilmittel",
+												"section": [
+													{
+														"title": "Elektronische Verordnung Heilmittel",
+														"entry": [
+															{
+																"reference": "urn:uuid:f253531a-97ba-432a-9d9b-789f2307540c",
+																"_reference": {
+																	"fhir_comments": [
+																		"  Referenz auf ServiceRequest  "
+																	]
+																}
+															},
+															{
+																"reference": "urn:uuid:03652da1-21f2-434d-b1e2-97c695022954",
+																"_reference": {
+																	"fhir_comments": [
+																		"  Referenz auf ServiceRequest  "
+																	]
+																}
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"fullUrl": "urn:uuid:f253531a-97ba-432a-9d9b-789f2307540c",
+											"resource": {
+												"resourceType": "ServiceRequest",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_ServiceRequest"
+													]
+												},
+												"status": "unknown",
+												"intent": "order",
+												"category": [
+													{
+														"coding": [
+															{
+																"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_Section_Type",
+																"code": "HLM",
+																"display": "Vorrangiges Heilmittel"
+															}
+														]
+													}
+												],
+												"code": {
+													"coding": [
+														{
+															"system": "https://e-lb.de/fhir/sid/KK_ELB_HLM_Katalog",
+															"code": "KG"
+														}
+													]
+												},
+												"quantityQuantity": {
+													"value": 20,
+													"unit": "{Count}",
+													"system": "http://unitsofmeasure.org",
+													"code": "1"
+												},
+												"subject": {
+													"identifier": {
+														"system": "http://fhir.de/sid/gkv/kvid-10",
+														"value": "K121212345"
+													}
+												}
+											}
+										},
+										{
+											"fullUrl": "urn:uuid:03652da1-21f2-434d-b1e2-97c695022954",
+											"resource": {
+												"resourceType": "ServiceRequest",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_VO_ServiceRequest"
+													]
+												},
+												"status": "unknown",
+												"intent": "order",
+												"category": [
+													{
+														"coding": [
+															{
+																"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_Section_Type",
+																"code": "ergaenzendes_HLM",
+																"display": "Ergänzendes Heilmittel"
+															}
+														]
+													}
+												],
+												"code": {
+													"coding": [
+														{
+															"system": "https://e-lb.de/fhir/sid/KK_ELB_HLM_Katalog",
+															"code": "KG"
+														}
+													]
+												},
+												"quantityQuantity": {
+													"value": 20,
+													"unit": "{Count}",
+													"system": "http://unitsofmeasure.org",
+													"code": "1"
+												},
+												"subject": {
+													"identifier": {
+														"system": "http://fhir.de/sid/gkv/kvid-10",
+														"value": "K121212345"
+													}
+												}
+											}
+										}
+									]
+								}
+							},
+							{
+								"fullUrl": "urn:uuid:7fa8dc74-2895-463e-b2c3-6e286fcdc8e9",
+								"resource": {
+									"resourceType": "ServiceRequest",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_LER_Zusatzinfos_ServiceRequest"
+										]
+									},
+									"status": "unknown",
+									"intent": "order",
+									"code": {
+										"coding": [
+											{
+												"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos",
+												"code": "GT"
+											}
+										]
+									},
+									"subject": {
+										"identifier": {
+											"system": "http://fhir.de/sid/gkv/kvid-10",
+											"value": "K121212345"
+										}
+									}
+								}
+							},
+							{
+								"fullUrl": "urn:uuid:cabc9b0e-99f0-47c2-a220-c1e9c12d0a7a",
+								"resource": {
+									"resourceType": "ServiceRequest",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_HLM_LER_Zusatzinfos_ServiceRequest"
+										]
+									},
+									"status": "unknown",
+									"intent": "order",
+									"code": {
+										"coding": [
+											{
+												"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_HLM_LER_Zusatzinfos",
+												"code": "Freq"
+											}
+										]
+									},
+									"subject": {
+										"identifier": {
+											"system": "http://fhir.de/sid/gkv/kvid-10",
+											"value": "K121212345"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}

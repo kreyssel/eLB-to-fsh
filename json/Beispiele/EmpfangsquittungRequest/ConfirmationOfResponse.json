@@ -1,0 +1,16 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ConfirmationOfResponse"
+		]
+	},
+	"parameter": [
+		{
+			"name": "confirmationBundleUuid",
+			"valueUuid": {
+				"value": "urn:uuid:4444d555-666e-77a8-999c-222222b2d33c"
+			}
+		}
+	]
+}

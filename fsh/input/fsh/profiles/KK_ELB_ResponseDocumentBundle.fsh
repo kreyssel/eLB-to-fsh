@@ -42,10 +42,10 @@ Id: KK_ELB_ResponseDocumentBundle
     * code = #1.2.840.10065.1.12.1.5 (exactly)
   * when MS
   * who MS
-    * identifier 1.. MS
+    * identifier 1..1 MS
     * identifier only $identifier-iknr
       * system MS
       * value MS
-  * sigFormat 1.. MS
+  * sigFormat 1..1 MS
   * sigFormat = #application/signature+xml (exactly)
-  * data 1.. MS
+  * data 1..1 MS

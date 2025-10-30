@@ -1,0 +1,17 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_PollingRequest"
+		]
+	},
+	"parameter": [
+		{
+			"name": "patient",
+			"valueIdentifier": {
+				"system": "http://fhir.de/sid/gkv/kvid-10",
+				"value": "K123456789"
+			}
+		}
+	]
+}

@@ -1,0 +1,303 @@
+{
+	"resourceType": "Parameters",
+	"meta": {
+		"profile": [
+			"https://e-lb.de/fhir/StructureDefinition/KK_ELB_BillingContainerParameters"
+		]
+	},
+	"parameter": [
+		{
+			"name": "emailContactPoint",
+			"valueContactPoint": {
+				"system": "email",
+				"value": "endpointmanager@example.org"
+			}
+		},
+		{
+			"name": "esolFile",
+			"valueBase64Binary": "bG9yZW0gaXBzdW0="
+		},
+		{
+			"name": "invoice",
+			"part": [
+				{
+					"name": "invoiceReference",
+					"valueString": "20230001"
+				},
+				{
+					"name": "container",
+					"resource": {
+						"resourceType": "Bundle",
+						"meta": {
+							"profile": [
+								"https://e-lb.de/fhir/StructureDefinition/KK_ELB_InvoiceContainerBundle"
+							]
+						},
+						"identifier": {
+							"system": "https://e-lb.de/fhir/sid/KK_ELB_Belegnummer",
+							"value": "11"
+						},
+						"type": "collection",
+						"entry": [
+							{
+								"fullUrl": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc7dbdb111c2",
+								"resource": {
+									"resourceType": "Bundle",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseDocumentBundle"
+										]
+									},
+									"identifier": {
+										"system": "urn:ietf:rfc:3986",
+										"value": "urn:uuid:4444d555-666e-77a8-999c-222222b2d33c"
+									},
+									"type": "document",
+									"timestamp": "2022-06-20T08:30:00Z",
+									"entry": [
+										{
+											"fullUrl": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc7dbdb11199",
+											"resource": {
+												"resourceType": "Composition",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ResponseComposition"
+													]
+												},
+												"status": "final",
+												"type": {
+													"coding": [
+														{
+															"system": "http://dvmd.de/fhir/CodeSystem/kdl",
+															"code": "AM190107"
+														}
+													]
+												},
+												"date": "2022-06-19T08:00:00Z",
+												"author": [
+													{
+														"identifier": {
+															"system": "http://fhir.de/sid/arge-ik/iknr",
+															"value": "123456780"
+														}
+													}
+												],
+												"title": "Elektronische Leistungsbestätigung",
+												"section": [
+													{
+														"entry": [
+															{
+																"reference": "urn:uuid:55522e3e-cb4a-55b6-77f8-dc9dbdb111c2",
+																"_reference": {
+																	"fhir_comments": [
+																		"  Referenz auf ChargeItem   "
+																	]
+																}
+															}
+														]
+													}
+												]
+											}
+										},
+										{
+											"fullUrl": "urn:uuid:55522e3e-cb4a-55b6-77f8-dc9dbdb111c2",
+											"resource": {
+												"resourceType": "ChargeItem",
+												"meta": {
+													"profile": [
+														"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ChargeItem"
+													],
+													"security": [
+														{
+															"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_CS_Nutzungsbedingung_Version",
+															"code": "1"
+														}
+													]
+												},
+												"extension": [
+													{
+														"url": "https://e-lb.de/fhir/StructureDefinition/KK_ELB_Payor",
+														"valueIdentifier": {
+															"system": "http://fhir.de/sid/arge-ik/iknr",
+															"value": "101575519"
+														}
+													}
+												],
+												"identifier": [
+													{
+														"system": "urn:ietf:rfc:3986",
+														"value": "urn:uuid:11122e3e-cb4a-55b6-77f8-dc9dbdb111c2"
+													}
+												],
+												"status": "billable",
+												"code": {
+													"coding": [
+														{
+															"system": "https://e-lb.de/fhir/sid/KK_ELB_ChargeItemCode",
+															"code": "0230"
+														}
+													]
+												},
+												"subject": {
+													"identifier": {
+														"system": "http://fhir.de/sid/gkv/kvid-10",
+														"value": "K121212345"
+													}
+												},
+												"occurrencePeriod": {
+													"start": "2022-06-12T16:50:00+00:00",
+													"end": "2022-06-12T17:50:00+00:00"
+												},
+												"performer": [
+													{
+														"function": {
+															"coding": [
+																{
+																	"system": "https://e-lb.de/fhir/CodeSystem/KK_ELB_SGS",
+																	"code": "F"
+																}
+															]
+														},
+														"actor": {
+															"type": "Organization",
+															"identifier": {
+																"system": "http://fhir.de/sid/arge-ik/iknr",
+																"value": "123456789"
+															},
+															"display": "Sarah Schneider"
+														}
+													}
+												]
+											}
+										}
+									],
+									"signature": {
+										"type": [
+											{
+												"system": "urn:iso-astm:E1762-95:2013",
+												"code": "1.2.840.10065.1.12.1.5"
+											}
+										],
+										"when": "2022-07-07T10:42:53.333208+02:00",
+										"who": {
+											"identifier": {
+												"system": "http://fhir.de/sid/arge-ik/iknr",
+												"value": "123456780"
+											}
+										},
+										"sigFormat": "application/signature+xml",
+										"data": "TG9yZW0gaXBzdW0gZG9sciBzaXI="
+									}
+								}
+							},
+							{
+								"fullUrl": "urn:uuid:33322e3e-cb4a-55b6-77f8-dc7dbdb141c2",
+								"resource": {
+									"resourceType": "ServiceRequest",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_ServiceRequest"
+										]
+									},
+									"status": "unknown",
+									"intent": "order",
+									"quantityQuantity": {
+										"value": 12,
+										"unit": "{Besuche}",
+										"system": "http://unitsofmeasure.org",
+										"code": "1"
+									},
+									"subject": {
+										"identifier": {
+											"system": "http://fhir.de/sid/gkv/kvid-10",
+											"value": "K121212345"
+										}
+									},
+									"authoredOn": "2022-12-09",
+									"requester": {
+										"identifier": {
+											"system": "https://fhir.kbv.de/NamingSystem/KBV_NS_Base_ANR",
+											"value": "222256789"
+										}
+									},
+									"reasonReference": [
+										{
+											"reference": "urn:uuid:44422e3e-cb4a-55b6-77f8-dc7dbdb141c2"
+										}
+									]
+								}
+							},
+							{
+								"fullUrl": "urn:uuid:44422e3e-cb4a-55b6-77f8-dc7dbdb141c2",
+								"resource": {
+									"resourceType": "Condition",
+									"meta": {
+										"profile": [
+											"https://e-lb.de/fhir/StructureDefinition/KK_ELB_Condition"
+										]
+									},
+									"clinicalStatus": {
+										"coding": [
+											{
+												"system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+												"code": "active"
+											}
+										]
+									},
+									"verificationStatus": {
+										"coding": [
+											{
+												"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+												"code": "confirmed"
+											}
+										]
+									},
+									"code": {
+										"coding": [
+											{
+												"extension": [
+													{
+														"url": "http://fhir.de/StructureDefinition/icd-10-gm-mehrfachcodierungs-kennzeichen",
+														"valueCoding": {
+															"system": "http://fhir.de/CodeSystem/icd-10-gm-mehrfachcodierungs-kennzeichen",
+															"code": "*",
+															"display": "*"
+														}
+													},
+													{
+														"url": "http://fhir.de/StructureDefinition/icd-10-gm-diagnosesicherheit",
+														"valueCoding": {
+															"system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_ICD_DIAGNOSESICHERHEIT",
+															"code": "G"
+														}
+													},
+													{
+														"url": "http://fhir.de/StructureDefinition/seitenlokalisation",
+														"valueCoding": {
+															"system": "https://fhir.kbv.de/CodeSystem/KBV_CS_SFHIR_ICD_SEITENLOKALISATION",
+															"code": "R"
+														}
+													}
+												],
+												"system": "http://fhir.de/CodeSystem/bfarm/icd-10-gm",
+												"version": "2023",
+												"code": "Z39.1"
+											}
+										],
+										"text": "Wöchnerin benötigt 12 weitere Besuche"
+									},
+									"subject": {
+										"identifier": {
+											"system": "http://fhir.de/sid/gkv/kvid-10",
+											"value": "K121212345"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	]
+}
