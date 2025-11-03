@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VALIDATOR_DIR=$SCRIPT_DIR/.validator
+VALIDATOR_DIR=$SCRIPT_DIR/.libs
 VALIDATOR_JAR=$VALIDATOR_DIR/validator_cli.jar
 
 # create .validator base folder
@@ -18,7 +18,7 @@ fi
 # Prüfen, ob Kommandozeilenparameter übergeben wurden
 if [ $# -eq 0 ]; then
   # Keine Parameter, verwende ./Beispiele/**
-  SRC=$SCRIPT_DIR/xml/Beispiele/
+  SRC=$SCRIPT_DIR/../xml/Beispiele/
 else
   # Parameter wurde angegeben, verwende diese
   if [[ "$1" = /* ]]; then

@@ -10,6 +10,8 @@ fsh/temp
 fsh/output
 fsh/template
 
+
+
 json/gofsh
 json/Beispiele/gofsh
 xml/gofsh
@@ -19,3 +21,4 @@ jsfshon/Beispiele/gofsh
 
 node_modules
 fsh/node_modules
+tools/.libs

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-PUBLISHER_DIR=$SCRIPT_DIR/.publisher
-PUBLISHER_JAR=$SCRIPT_DIR/.publisher/publisher.jar
-FSH_DIR=$SCRIPT_DIR/fsh
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+PUBLISHER_DIR=$SCRIPT_DIR/.libs
+PUBLISHER_JAR=$PUBLISHER_DIR/publisher.jar
+FSH_DIR=$SCRIPT_DIR/../fsh
 OUTPUT_DIR=$FSH_DIR/output
 
 # create .validator base folder
