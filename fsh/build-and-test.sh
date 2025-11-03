@@ -9,7 +9,7 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-"$SCRIPT_DIR/../validate.sh" "$1"
+"$SCRIPT_DIR/../tools/validate.sh" "$1"
 
 echo ""
 
