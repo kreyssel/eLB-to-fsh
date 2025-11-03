@@ -20,6 +20,13 @@ if [ ! -d "$JSON_DIR" ]; then
   mkdir "$JSON_DIR"
 fi
 
+if npm ls fhir -g &> /dev/null; then
+  echo "npm fhir Modul bereits installiert"
+else
+  echo "npm fhir Modul ist nicht installiert, wird jetzt installiert..."
+  npm install -g fhir
+fi
+
 # Alle .xml-Dateien rekursiv sammeln
 find "$XML_DIR" -type f -name '*.xml' | while read file; do
   # Relativen Pfad zum XML_DIR bestimmen (ohne ./)
@@ -30,5 +37,5 @@ find "$XML_DIR" -type f -name '*.xml' | while read file; do
   jsonfile="$JSON_DIR/${basename}.json"
 
   echo "Konvertiere $file → $jsonfile"
-  node xml-to-json.js "$file" "$jsonfile"
+  node "$SCRIPT_DIR/xml-to-json.js" "$file" "$jsonfile"
 done

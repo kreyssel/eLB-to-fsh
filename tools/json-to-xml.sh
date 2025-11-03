@@ -20,8 +20,22 @@ if [ ! -d "$XML_DIR" ]; then
   mkdir "$XML_DIR"
 fi
 
-for file in "$JSON_DIR"
-do
-  filename=$(basename "$file" .json)
-  hapi-fhir-cli convert-resource-format -i "$file" -o "$XML_DIR/${filename}.xml"
+if npm ls fhir -g &> /dev/null; then
+  echo "npm fhir Modul bereits installiert"
+else
+  echo "npm fhir Modul ist nicht installiert, wird jetzt installiert..."
+  npm install -g fhir
+fi
+
+# Alle .json-Dateien rekursiv sammeln
+find "$JSON_DIR" -type f -name '*.json' | while read file; do
+  # Relativen Pfad zum JSON_DIR bestimmen (ohne ./)
+  relpath="${file#$JSON_DIR}"
+  # Nur Dateiname ohne .json
+  basename="${relpath%.json}"
+
+  xmlfile="$XML_DIR/${basename}.xml"
+
+  echo "Konvertiere $file → $xmlfile"
+  node "$SCRIPT_DIR/json-to-xml.js" "$file" "$xmlfile"
 done
