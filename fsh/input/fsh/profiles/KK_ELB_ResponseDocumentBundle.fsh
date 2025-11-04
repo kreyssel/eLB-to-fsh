@@ -34,7 +34,7 @@ Id: KK_ELB_ResponseDocumentBundle
   * fullUrl 1.. MS
   * resource 1.. MS
   * resource only $KK_ELB_ChargeItem
-* signature 1..1 MS
+* signature 0..1 MS
   * type ..1 MS
     * system 1.. MS
     * system = "urn:iso-astm:E1762-95:2013" (exactly)
