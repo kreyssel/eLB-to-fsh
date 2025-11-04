@@ -29,5 +29,5 @@ jobs:
     - uses: actions/checkout@v4
     - run: gem install jekyll
     - run: npm install -g fsh-sushi
-    - run: ./publish.sh
-    - run: ./validate.sh
+    - run: ./tools/publish.sh
+    - run: ./tools/validate.sh
