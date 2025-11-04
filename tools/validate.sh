@@ -3,6 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VALIDATOR_DIR=$SCRIPT_DIR/.libs
 VALIDATOR_JAR=$VALIDATOR_DIR/validator_cli.jar
+FSH_DIR=$SCRIPT_DIR/../fsh
 
 # create .validator base folder
 if [ ! -d "$VALIDATOR_DIR" ]; then
@@ -41,10 +42,10 @@ fi
 
 # run validation
 
-#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -watch-mode single -version 4.0 -ig "$SCRIPT_DIR/fsh/fsh-generated/resources" -ig de.basisprofil.r4#1.5.4
+#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -watch-mode single -version 4.0 -ig "$FSH_DIR/fsh-generated/resources" -ig de.basisprofil.r4#1.5.4
 
-java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$SCRIPT_DIR/fsh/fsh-generated/resources" -ig de.basisprofil.r4#1.5.4
-#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$SCRIPT_DIR/fsh/output" -ig de.basisprofil.r4#1.5.4 -level errors
+java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$FSH_DIR/fsh-generated/resources" -ig de.basisprofil.r4#1.5.4
+#java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$FSH_DIR/output" -ig de.basisprofil.r4#1.5.4 -level errors
 
 #java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$SCRIPT_DIR/xml" -ig de.basisprofil.r4#1.5.4
 #java -Dfile.encoding=UTF-8 -jar "$VALIDATOR_JAR" "${files[@]}" -version 4.0 -ig "$SCRIPT_DIR/xml" -ig de.basisprofil.r4#1.4.0 

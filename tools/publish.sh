@@ -21,5 +21,7 @@ if [ -d "$OUTPUT_DIR" ]; then
   rm -rf "$OUTPUT_DIR"
 fi
 
+cd $FSH_DIR
+
 # run 
-java -Xms3550m -Xmx3550m -jar "$PUBLISHER_JAR" -ig "$FSH_DIR/ig.ini"
+java -Xms3550m -Xmx3550m -jar "$PUBLISHER_JAR" -ig "ig.ini"
